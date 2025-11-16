@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="login-box">
+    <h2>Welcome sa aking website bebe!</h2>
+    <input type="text" id="name" placeholder="Enter your Name">
+    <input type="password" id="password" placeholder="the endearment i gave you">
+    <button onclick="login()">Login</button>
+</div>
+<div id="balloon-container"></div>
+
+<script>
+function login() {
+    let name = document.getElementById("name").value.trim().toLowerCase();
+    let pass = document.getElementById("password").value;
+
+    if(name === "jean" && pass === "miluna") {
+        window.location.href = "menu.html";
+    } else {
+        alert("Incorrect name or password!");
+    }
+}
+</script>
+<script>
+function createBalloon() {
+    const balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+
+    // Random pastel colors
+    const colors = ["#ffb6d9", "#c3f5ff", "#fde2ff", "#ffd6a5", "#bde0fe"];
+    balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+    // Random horizontal position
+    balloon.style.left = Math.random() * 100 + "vw";
+
+    // Random size
+    let size = Math.random() * 20 + 20;
+    balloon.style.width = size + "px";
+    balloon.style.height = (size + 15) + "px";
+
+    // Random animation duration
+    balloon.style.animationDuration = (Math.random() * 5 + 5) + "s";
+
+    document.getElementById("balloon-container").appendChild(balloon);
+
+    // Remove balloon after animation
+    setTimeout(() => {
+        balloon.remove();
+    }, 7000);
+}
+
+// Create balloons continuously
+setInterval(createBalloon, 700);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffeef8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Login Box */
+.login-box, .menu-box, .content-box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: left;
+    width: 300px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Buttons */
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    background: #ffb6d9;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover {
+    background: #ff87c5;
+}
+
+/* Dropdown */
+select {
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid #ffb6d9;
+}
+
+/* Envelope */
+.envelope {
+    width: 200px;
+    height: 120px;
+    background: #ffc8dd;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+.letter {
+    margin-top: 20px;
+    background: white;
+    padding: 20px;
+    width: 250px;
+    border-radius: 10px;
+    display: none;
+}
+
+/* Gift Box */
+.gift {
+    width: 200px;
+    height: 200px;
+    background: #ffb6d9;
+    border: 5px solid #ff87c5;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* Video */
+video {
+    width: 300px;
+    margin-top: 20px;
+    display: none;
+}
+
+/* Game */
+.question {
+    margin: 10px;
+    font-weight: bold;
+}
+.answer-btn {
+    padding: 8px;
+    margin: 5px;
+    background: #c3f5ff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.answer-btn:hover {
+    background: #a4edff;
+}
+
+/* Panda Final */
+.panda-box {
+    display: none;
+    text-align: center;
+}
+
+/* Balloon background */
+#balloon-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Behind all content */
+}
+
+.balloon {
+    position: absolute;
+    width: 30px;
+    height: 40px;
+    background-color: #ffb6d9;
+    border-radius: 50% 50% 45% 45%;
+    opacity: 0.7;
+    animation: floatUp 7s linear infinite;
+}
+
+.balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 14px;
+    width: 2px;
+    height: 15px;
+    background: #888;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0.1;
+    }
+}

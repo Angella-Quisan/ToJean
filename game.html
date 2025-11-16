@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fun Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 🎵 BACKGROUND MUSIC -->
+<audio id="bgMusic" src="lihim.mp3" autoplay loop></audio>
+
+<div class="content-box">
+    <h2>Fun Game 💗</h2>
+    <div id="gameArea"></div>
+
+    <div class="panda-box" id="pandaBox">
+        <img src="panda.jpg" width="200"><br>
+        <h5>I don't know if you're ready or not?</h5>
+        <h5>But i wanna risk it now, it's ok to answer "no" i'll understand it</h5>
+        <h5>But saying yes is a big thing</h5>
+        <h5>So, Jean Abonal,</h5>
+        <h5>I, Quisan, Francys Angella Gravamen</h5>
+        <h4>Will you take my hand and give it a try?</h4>
+        <button onclick="yes()">Yes</button>
+        <button onclick="no()">No</button>
+    </div>
+
+    <button onclick="history.back()">Back</button>
+</div>
+<div id="balloon-container"></div>
+
+<script>
+let qNum = 0;
+let questions = [
+    {q:"What goes up but never comes down?", a:"age"},
+    {q:"What can you keep after giving to someone?", a:"word"},
+    {q:"Which word becomes shorter when you add 2 letters to it?", a:"short"},
+    {q:"What can you break, even if you never pick it up or touch it?", a:"promise"}
+];
+
+function loadQuestion() {
+    if(qNum < questions.length) {
+        document.getElementById("gameArea").innerHTML = `
+            <div class="question">${questions[qNum].q}</div>
+            <input id="ans" placeholder="Type your answer">
+            <button onclick="check()">Submit</button>
+        `;
+    } else {
+        showPanda();
+    }
+}
+
+function check() {
+    let ans = document.getElementById("ans").value.toLowerCase();
+    if(ans === questions[qNum].a) {
+        qNum++;
+        loadQuestion();
+    } else {
+        alert("Try again!");
+    }
+}
+
+function showPanda() {
+    document.getElementById("gameArea").style.display = "none";
+    document.getElementById("pandaBox").style.display = "block";
+}
+
+function yes() { alert("Really!!! WAHHHHHHHHH FINALLYYYYYYY"); }
+function no() { alert("Awww its ok bebe but I still like you XD"); }
+
+loadQuestion();
+</script>
+
+<script>
+function createBalloon() {
+    const balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+
+    const colors = ["#ffb6d9", "#c3f5ff", "#fde2ff", "#ffd6a5", "#bde0fe"];
+    balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    balloon.style.left = Math.random() * 100 + "vw";
+
+    let size = Math.random() * 20 + 20;
+    balloon.style.width = size + "px";
+    balloon.style.height = (size + 15) + "px";
+
+    balloon.style.animationDuration = (Math.random() * 5 + 5) + "s";
+
+    document.getElementById("balloon-container").appendChild(balloon);
+
+    setTimeout(() => {
+        balloon.remove();
+    }, 7000);
+}
+
+setInterval(createBalloon, 700);
+</script>
+
+</body>
+</html>

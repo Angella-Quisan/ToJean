@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="menu-box">
+    <h2>Hello Jean 💗</h2>
+    <select onchange="goPage(this.value)">
+        <option value="">Choose Surprise</option>
+        <option value="envelope.html">Message</option>
+        <option value="musiclist.html">Music List</option>
+        <option value="game.html">Fun Game</option>
+    </select>
+</div>
+<div id="balloon-container"></div>
+
+<script>
+function goPage(page) {
+    if(page !== "") {
+        window.location.href = page;
+    }
+}
+</script>
+<script>
+function createBalloon() {
+    const balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+
+    // Random pastel colors
+    const colors = ["#ffb6d9", "#c3f5ff", "#fde2ff", "#ffd6a5", "#bde0fe"];
+    balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+    // Random horizontal position
+    balloon.style.left = Math.random() * 100 + "vw";
+
+    // Random size
+    let size = Math.random() * 20 + 20;
+    balloon.style.width = size + "px";
+    balloon.style.height = (size + 15) + "px";
+
+    // Random animation duration
+    balloon.style.animationDuration = (Math.random() * 5 + 5) + "s";
+
+    document.getElementById("balloon-container").appendChild(balloon);
+
+    // Remove balloon after animation
+    setTimeout(() => {
+        balloon.remove();
+    }, 7000);
+}
+
+// Create balloons continuously
+setInterval(createBalloon, 700);
+</script>
+
+</body>
+</html>

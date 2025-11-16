@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Birthday Music Playlist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="content-box">
+    <h2>🎵 Hear me Out 🎵</h2>
+
+    <div class="music-list">
+
+        <div class="song">
+            <span>Whenever you feel down.</span>
+            <button onclick="playSong('SleepTonight.mp3')">Play me</button>
+        </div>
+
+        <div class="song">
+            <span>If you feel the world is againts you.</span>
+            <button onclick="playSong('Youll Be Safe Here.mp3')">Play me</button>
+        </div>
+
+        <div class="song">
+            <span>You have to know</span>
+            <button onclick="playSong('Dito sakin.mp3')">Play me</button>
+        </div>
+
+        <div class="song">
+            <span>Please?</span>
+            <button onclick="playSong('Enchanted.mp3')">Play me</button>
+        </div>
+
+        <div class="song">
+            <span>Well... this songs pretty</span>
+            <button onclick="playSong('oksihina.mp3')">Play me</button>
+        </div>
+
+    </div>
+
+    <audio id="audioPlayer" controls style="display:none;"></audio>
+
+    <button onclick="history.back()" class="back-btn">Back</button>
+</div>
+
+<div id="balloon-container"></div>
+
+<script>
+function playSong(file) {
+    let audio = document.getElementById("audioPlayer");
+    audio.src = file;
+    audio.style.display = "block";
+    audio.play();
+}
+
+// 🎈 Balloon Animation
+function createBalloon() {
+    const balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+
+    const colors = ["#ffb6d9", "#c3f5ff", "#fde2ff", "#ffd6a5", "#bde0fe"];
+    balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    balloon.style.left = Math.random() * 100 + "vw";
+
+    let size = Math.random() * 20 + 20;
+    balloon.style.width = size + "px";
+    balloon.style.height = (size + 15) + "px";
+
+    balloon.style.animationDuration = (Math.random() * 5 + 5) + "s";
+
+    document.getElementById("balloon-container").appendChild(balloon);
+
+    setTimeout(() => balloon.remove(), 7000);
+}
+
+setInterval(createBalloon, 700);
+</script>
+
+</body>
+</html>
